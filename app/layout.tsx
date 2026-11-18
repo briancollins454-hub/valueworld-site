@@ -15,10 +15,11 @@ export const metadata: Metadata = {
   },
   description:
     'Value World Ballymena at 155 Church Street: household, cleaning, health and beauty, toys, art and stationery, cards, sweets, drinks and hot food and coffee, all at low prices.',
-  openGraph: { type: 'website', locale: 'en_GB', siteName: 'Value World Ballymena' },
+  openGraph: { type: 'website', locale: 'en_GB', siteName: 'Value World Ballymena', images: ['/logo.png'] },
+  icons: { icon: '/icon.png', apple: '/apple-touch-icon.png' },
 };
 
-export const viewport: Viewport = { themeColor: '#d6111e' };
+export const viewport: Viewport = { themeColor: '#e1061b' };
 
 const storeSchema = {
   '@context': 'https://schema.org',
