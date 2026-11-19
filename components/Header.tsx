@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-white/95 backdrop-blur">
-      <div className="wrap flex h-[80px] items-center justify-between gap-4">
+      <div className="wrap flex h-[60px] items-center sm:h-[68px] justify-between gap-4">
         <Link href="/" aria-label="Value World Ballymena, home" onClick={() => setOpen(false)}>
           <Logo />
         </Link>
@@ -51,7 +51,7 @@ export default function Header() {
           )}
           <button
             type="button"
-            className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink/10 lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border-2 border-ink/10 lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}

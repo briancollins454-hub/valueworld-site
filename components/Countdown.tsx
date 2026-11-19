@@ -42,14 +42,14 @@ export default function Countdown() {
 
   return (
     <div>
-      <p className="font-display text-sm font-extrabold uppercase tracking-[0.14em] text-white/80">Doors open in</p>
-      <div className="mt-3 flex gap-2 sm:gap-3" role="timer" aria-label={`Opening ${site.openingDate}`}>
+      <p className="font-display text-[12px] font-extrabold uppercase tracking-[0.14em] text-white/80">Doors open in</p>
+      <div className="mt-2 flex gap-2 sm:gap-2.5" role="timer" aria-label={`Opening ${site.openingDate}`}>
         {cells.map(([label, v]) => (
-          <div key={label} className="w-[68px] rounded-2xl bg-white/10 py-3 text-center ring-1 ring-white/20 backdrop-blur sm:w-[78px]">
-            <span className="block font-display text-[30px] font-black leading-none tabular-nums text-white sm:text-[36px]" aria-hidden="true">
+          <div key={label} className="w-[62px] rounded-xl bg-white/10 py-2 text-center ring-1 ring-white/20 backdrop-blur sm:w-[78px]">
+            <span className="block font-display text-[26px] font-black leading-none tabular-nums text-white sm:text-[30px]" aria-hidden="true">
               {v === undefined ? '--' : String(v).padStart(2, '0')}
             </span>
-            <span className="mt-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/70" aria-hidden="true">
+            <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.14em] text-white/70" aria-hidden="true">
               {label}
             </span>
           </div>

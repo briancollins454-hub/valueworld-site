@@ -28,33 +28,40 @@ export default function Hero() {
         </>
       )}
 
-      <div className="wrap grid items-center gap-12 pb-16 pt-12 sm:pb-24 sm:pt-16 lg:grid-cols-[1.1fr_1fr] lg:pb-28">
+      <div className="wrap grid items-center gap-10 pb-8 pt-6 sm:pb-12 sm:pt-10 lg:grid-cols-[1.15fr_1fr] lg:pb-14">
         <div>
-          <p className="inline-flex animate-rise items-center gap-2 rounded-full bg-white/10 px-4 py-2 font-display text-[13px] font-extrabold uppercase tracking-[0.14em] ring-1 ring-white/25">
+          <p className="inline-flex animate-rise items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 font-display text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.14em] ring-1 ring-white/25">
             <span className="h-2 w-2 rounded-full bg-sun" aria-hidden="true" />
-            {site.openingSoon ? `Grand opening · ${site.openingDate}` : 'Now open · Church Street, Ballymena'}
+            {site.openingSoon ? (
+              <>
+                <span className="sm:hidden">Grand opening · {site.openingDate.replace('Wednesday', 'Wed').replace('November', 'Nov')}</span>
+                <span className="hidden sm:inline">Grand opening · {site.openingDate}</span>
+              </>
+            ) : (
+              'Now open · Church Street, Ballymena'
+            )}
           </p>
 
-          <h1 className="mt-6 animate-rise text-[56px] font-black leading-[0.92] tracking-[-0.03em] text-white [animation-delay:.08s] sm:text-[84px] lg:text-[96px]">
+          <h1 className="mt-4 animate-rise text-[44px] font-black leading-[0.92] tracking-[-0.03em] text-white [animation-delay:.08s] sm:text-[64px] lg:text-[76px]">
             Big brands.
             <br />
             <span className="relative inline-block">
               <span className="relative z-10">Small prices.</span>
-              <svg className="absolute -bottom-3 left-0 z-0 w-full text-sun" height="18" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true">
+              <svg className="absolute -bottom-2 left-0 z-0 w-full text-sun" height="18" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true">
                 <path d="M3 12 C 80 2, 200 2, 297 10" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
               </svg>
             </span>
           </h1>
 
-          <p className="mt-8 max-w-xl animate-rise text-lg leading-relaxed text-white/90 [animation-delay:.16s] sm:text-xl">
+          <p className="mt-5 max-w-xl animate-rise text-[16px] leading-snug text-white/90 [animation-delay:.16s] sm:text-lg">
             Household, toys, stationery, health and beauty, sweets and fresh coffee, all under one roof at 155 Church Street, Ballymena.
           </p>
 
-          <div className="mt-8 animate-rise [animation-delay:.24s]">
+          <div className="mt-5 animate-rise [animation-delay:.24s]">
             <Countdown />
           </div>
 
-          <div className="mt-9 flex animate-rise flex-col gap-3 [animation-delay:.32s] sm:flex-row">
+          <div className="mt-6 flex animate-rise gap-2.5 [animation-delay:.32s] sm:gap-3 [&>a]:min-h-[48px] [&>a]:flex-1 [&>a]:px-4 sm:[&>a]:flex-none sm:[&>a]:px-7">
             <Link href="/offers/" className="btn-sun">
               <Tag size={18} aria-hidden="true" /> See the offers
             </Link>
@@ -65,7 +72,7 @@ export default function Hero() {
         </div>
 
         {/* Logo badge with floating tags */}
-        <div className="relative mx-auto hidden aspect-square w-full max-w-[500px] lg:block" aria-hidden="true">
+        <div className="relative mx-auto hidden aspect-square w-full max-w-[400px] lg:block" aria-hidden="true">
           <div className="absolute inset-[6%] animate-spinslow rounded-full border-[3px] border-dashed border-white/30" />
           <div className="absolute inset-[14%] animate-pop rounded-full bg-white/10 p-5 shadow-[0_40px_80px_-30px_rgba(0,0,0,.6)] ring-1 ring-white/25 [animation-delay:.2s]">
             <img src="/logo.png" alt="" className="h-full w-full animate-float rounded-full" />
