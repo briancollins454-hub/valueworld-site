@@ -17,6 +17,15 @@ export const site = {
   phone: null as string | null,
   email: 'valueworldnorthernireland@gmail.com',
 
+  // Legal company details (Companies House). Shown in the footer and on the contact page.
+  company: {
+    name: 'Valueworld NI Limited',
+    number: 'NI741572',
+    registeredIn: 'Northern Ireland',
+    registeredOffice: '155 Church Street, Ballymena, BT43 6DG, Northern Ireland',
+    vatNumber: null as string | null, // TODO: add if VAT registered
+  },
+
   // TODO: Facebook and Instagram page links.
   social: {
     facebook: null as string | null,

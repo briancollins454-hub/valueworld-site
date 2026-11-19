@@ -27,6 +27,8 @@ const storeSchema = {
   '@context': 'https://schema.org',
   '@type': 'Store',
   name: 'Value World Ballymena',
+  legalName: site.company.name,
+  identifier: { '@type': 'PropertyValue', propertyID: 'Companies House (Northern Ireland)', value: site.company.number },
   url: site.url,
   email: site.email,
   ...(site.phone ? { telephone: site.phone } : {}),

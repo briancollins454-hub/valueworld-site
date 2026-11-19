@@ -36,6 +36,25 @@ export default function ContactPage() {
             </span>
           </a>
           <MapCard />
+          <div className="rounded-3xl border border-ink/10 bg-white p-6 text-[15px] leading-relaxed">
+            <h2 className="font-display text-lg font-extrabold">Company details</h2>
+            <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-ink-soft">
+              <dt className="font-semibold text-ink">Company</dt>
+              <dd>{site.company.name}</dd>
+              <dt className="font-semibold text-ink">Company no.</dt>
+              <dd>{site.company.number}</dd>
+              <dt className="font-semibold text-ink">Registered in</dt>
+              <dd>{site.company.registeredIn}</dd>
+              <dt className="font-semibold text-ink">Registered office</dt>
+              <dd>{site.company.registeredOffice}</dd>
+              {site.company.vatNumber && (
+                <>
+                  <dt className="font-semibold text-ink">VAT no.</dt>
+                  <dd>{site.company.vatNumber}</dd>
+                </>
+              )}
+            </dl>
+          </div>
         </div>
       </section>
     </>

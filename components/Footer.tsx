@@ -82,8 +82,12 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-          <p>© {new Date().getFullYear()} Value World NI Ltd</p>
+          <p>© {new Date().getFullYear()} {site.company.name}</p>
         </div>
+        <p className="wrap pb-24 text-[12px] leading-relaxed text-white/50 lg:pb-6">
+          Value World Ballymena is a trading name of {site.company.name}, registered in {site.company.registeredIn}, company number {site.company.number}. Registered office: {site.company.registeredOffice}.
+          {site.company.vatNumber && ` VAT number ${site.company.vatNumber}.`}
+        </p>
       </div>
     </footer>
   );

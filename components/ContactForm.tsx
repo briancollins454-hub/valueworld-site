@@ -62,6 +62,9 @@ export default function ContactForm() {
           Sorry, that didn&apos;t send. Please try again or email {site.email}.
         </p>
       )}
+      <p className="text-[13px] leading-relaxed text-ink-faint">
+        We only use your details to reply to your message. They are not shared or used for marketing. {site.company.name}, {site.company.registeredOffice}.
+      </p>
       <button type="submit" disabled={state === 'sending'} className="btn-brand w-full sm:w-auto">
         <Send size={18} aria-hidden="true" /> {state === 'sending' ? 'Sending…' : 'Send message'}
       </button>
