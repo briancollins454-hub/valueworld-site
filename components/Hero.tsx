@@ -45,10 +45,11 @@ export default function Hero() {
           <h1 className="mt-4 animate-rise text-[44px] font-black leading-[0.92] tracking-[-0.03em] text-white [animation-delay:.08s] sm:text-[64px] lg:text-[76px]">
             Big brands.
             <br />
-            <span className="relative inline-block">
+            <span className="relative inline-block pb-[0.32em]">
               <span className="relative z-10">Small prices.</span>
-              <svg className="absolute -bottom-2 left-0 z-0 w-full text-sun" height="18" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M3 12 C 80 2, 200 2, 297 10" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
+              {/* Underline sits below the letters' descenders so it never crosses the "p" */}
+              <svg className="absolute bottom-0 left-0 z-0 h-[0.16em] w-full text-sun" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M4 9 C 80 3, 200 3, 296 7" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
               </svg>
             </span>
           </h1>
@@ -61,12 +62,12 @@ export default function Hero() {
             <Countdown />
           </div>
 
-          <div className="mt-6 flex animate-rise gap-2.5 [animation-delay:.32s] sm:gap-3 [&>a]:min-h-[48px] [&>a]:flex-1 [&>a]:px-4 sm:[&>a]:flex-none sm:[&>a]:px-7">
+          <div className="mt-5 flex animate-rise gap-2.5 [animation-delay:.32s] sm:gap-3 [&>a]:min-h-[48px] [&>a]:flex-1 [&>a]:whitespace-nowrap [&>a]:px-3 [&>a]:text-[15px] sm:[&>a]:flex-none sm:[&>a]:px-7 sm:[&>a]:text-[17px]">
             <Link href="/offers/" className="btn-sun">
-              <Tag size={18} aria-hidden="true" /> See the offers
+              <Tag size={18} aria-hidden="true" className="shrink-0" /> See offers
             </Link>
             <a href={site.directions} target="_blank" rel="noopener" className="btn-ghost">
-              <Navigation size={18} aria-hidden="true" /> Get directions
+              <Navigation size={18} aria-hidden="true" className="shrink-0" /> Directions
             </a>
           </div>
         </div>
