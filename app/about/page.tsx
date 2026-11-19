@@ -2,14 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHead from '@/components/PageHead';
 import Departments from '@/components/Departments';
+import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'About us',
   description: 'Value World brings big brands at small prices to Church Street, Ballymena.',
 };
 
-// TODO: replace the story paragraphs with Pat's own words about Value World and the Ballymena shop,
-// and add photos of the team and shop floor.
+// TODO: replace the story paragraphs with Pat's own words. The right-hand panel switches to the
+// first four gallery photos once they're added in lib/site.ts.
 export default function AboutPage() {
   return (
     <>
@@ -30,20 +31,21 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          {/* Photo slots: shop front, team, shop floor, toy section */}
-          {['Shop front', 'The team', 'Shop floor', 'Toy section'].map((label, i) => (
-            <div
-              key={label}
-              className={`grid aspect-square place-items-center rounded-3xl text-center font-display text-sm font-extrabold uppercase tracking-wide ${
-                i % 3 === 0 ? 'bg-brand text-white/80' : 'bg-sun/60 text-ink/60'
-              }`}
-            >
-              {label}
-              <span className="sr-only"> photo coming soon</span>
-            </div>
-          ))}
-        </div>
+        {site.photos.gallery.length >= 4 ? (
+          <div className="grid grid-cols-2 gap-3">
+            {site.photos.gallery.slice(0, 4).map((p) => (
+              <img key={p.src} src={p.src} alt={p.alt} className="aspect-square w-full rounded-3xl object-cover" />
+            ))}
+          </div>
+        ) : (
+          <div data-reveal className="relative isolate grid min-h-[340px] place-items-center overflow-hidden rounded-[32px] bg-brand">
+            <div className="dots absolute inset-0 -z-10 opacity-60" />
+            <div className="absolute -bottom-24 -right-24 -z-10 h-72 w-72 rounded-full bg-brand-logo" />
+            <img src="/logo.png" alt="" aria-hidden="true" className="h-56 w-56 animate-float rounded-full shadow-[0_30px_60px_-25px_rgba(0,0,0,.6)] sm:h-64 sm:w-64" />
+            <span className="tag absolute left-6 top-8 rotate-[-8deg] bg-sun py-2.5 pl-8 pr-4 font-display font-black text-ink">Big brands</span>
+            <span className="tag absolute bottom-8 right-6 rotate-[6deg] bg-white py-2.5 pl-8 pr-4 font-display font-black text-brand">Small prices</span>
+          </div>
+        )}
       </section>
 
       <section className="wrap pt-16">

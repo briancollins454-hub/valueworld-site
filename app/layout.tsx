@@ -5,6 +5,8 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import OpeningBanner from '@/components/OpeningBanner';
+import MobileBar from '@/components/MobileBar';
+import RevealInit from '@/components/RevealInit';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -46,7 +48,7 @@ const storeSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB">
-      <body>
+      <body className="pb-[68px] lg:pb-0">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">
           Skip to content
         </a>
@@ -54,6 +56,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <MobileBar />
+        <RevealInit />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(storeSchema) }} />
       </body>
     </html>

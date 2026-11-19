@@ -27,6 +27,15 @@ export const site = {
   // While `openingSoon` is true, every page shows the opening banner.
   openingSoon: true,
   openingDate: 'Wednesday 25 November',
+  // TODO: confirm the opening time. The countdown counts down to this (UK time in November = UTC).
+  openingAt: '2026-11-25T09:00:00Z',
+
+  // Photos. Put files in /public/photos/ and list them here; each section appears once it has photos.
+  photos: {
+    hero: null as string | null, // shop front, landscape
+    band: null as string | null, // wide shot of the shop floor
+    gallery: [] as { src: string; alt: string }[],
+  },
 
   // TODO: confirm hours. These are the hours in the opening plan, not yet confirmed.
   hours: [
