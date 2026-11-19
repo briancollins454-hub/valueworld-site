@@ -12,8 +12,8 @@ module.exports = {
         paper: { DEFAULT: '#ffffff', warm: '#fbf7f2' },
       },
       fontFamily: {
-        display: ['"Nunito Variable"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter Variable"', 'system-ui', 'sans-serif'],
+        display: ['"Bricolage Grotesque Variable"', 'system-ui', 'sans-serif'],
+        sans: ['"Albert Sans Variable"', 'system-ui', 'sans-serif'],
       },
       maxWidth: { site: '1200px' },
       keyframes: {

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import '@fontsource-variable/nunito';
-import '@fontsource-variable/inter';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/albert-sans';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
