@@ -29,20 +29,46 @@ export default function Hero() {
       )}
 
       <div className="wrap grid items-center gap-10 pb-8 pt-6 sm:pb-12 sm:pt-10 lg:grid-cols-[1.15fr_1fr] lg:pb-14">
-        <div>
-          <p className="inline-flex animate-rise items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 font-display text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.14em] ring-1 ring-white/25">
-            <span className="h-2 w-2 rounded-full bg-sun" aria-hidden="true" />
-            {site.openingSoon ? (
-              <>
-                <span className="sm:hidden">Grand opening · {site.openingDate.replace('Wednesday', 'Wed').replace('November', 'Nov')}</span>
-                <span className="hidden sm:inline">Grand opening · {site.openingDate}</span>
-              </>
-            ) : (
-              'Now open · Church Street, Ballymena'
-            )}
-          </p>
+        <div className="relative">
+          {/* Tablet badge, floating top right where there is room beside the headline */}
+          <div className="pointer-events-none absolute -right-1 top-1 z-0 hidden sm:block lg:hidden" aria-hidden="true">
+            <div className="relative h-[150px] w-[150px]">
+              <div className="absolute -inset-2 animate-spinslow rounded-full border-2 border-dashed border-white/35" />
+              <div className="h-full w-full animate-pop rounded-full bg-white/10 p-2.5 shadow-[0_20px_40px_-18px_rgba(0,0,0,.6)] ring-1 ring-white/25 [animation-delay:.2s]">
+                <img src="/logo.png" alt="" className="h-full w-full animate-float rounded-full" />
+              </div>
+              <span
+                style={{ ['--r' as string]: '-9deg' }}
+                className="tag absolute -bottom-3 -left-8 animate-float bg-sun py-1.5 pl-7 pr-3 font-display text-[14px] font-black text-ink shadow-[0_10px_20px_-10px_rgba(0,0,0,.5)] [animation-delay:.8s]"
+              >
+                Big brands
+              </span>
+            </div>
+          </div>
 
-          <h1 className="mt-4 animate-rise text-[44px] font-black leading-[0.92] tracking-[-0.03em] text-white [animation-delay:.08s] sm:text-[64px] lg:text-[76px]">
+          {/* Phones: badge in its own row with the opening label beside it */}
+          <div className="relative z-10 flex items-center gap-3.5 sm:block">
+            <div className="relative h-[76px] w-[76px] shrink-0 sm:hidden" aria-hidden="true">
+              <div className="absolute -inset-1.5 animate-spinslow rounded-full border-2 border-dashed border-white/35" />
+              <div className="h-full w-full animate-pop rounded-full bg-white/10 p-1 shadow-[0_14px_30px_-14px_rgba(0,0,0,.6)] ring-1 ring-white/25">
+                <img src="/logo.png" alt="" className="h-full w-full rounded-full" />
+              </div>
+            </div>
+            <p className="inline-flex animate-rise flex-wrap items-center gap-x-2 gap-y-0.5 rounded-2xl bg-white/10 px-3.5 py-1.5 font-display text-[12px] font-extrabold uppercase tracking-[0.14em] ring-1 ring-white/25 sm:rounded-full sm:text-[13px]">
+              <span className="h-2 w-2 rounded-full bg-sun" aria-hidden="true" />
+              {site.openingSoon ? (
+                <>
+                  <span className="sm:hidden">Grand opening</span>
+                  <span className="basis-full pl-4 text-sun sm:hidden">{site.openingDate.replace('Wednesday', 'Wed').replace('November', 'Nov')}</span>
+                  <span className="hidden sm:inline">Grand opening · {site.openingDate}</span>
+                </>
+              ) : (
+                'Now open · Church Street, Ballymena'
+              )}
+            </p>
+          </div>
+
+          <h1 className="relative z-10 mt-4 animate-rise text-[44px] font-black leading-[0.92] tracking-[-0.03em] text-white [animation-delay:.08s] sm:text-[64px] lg:text-[76px]">
             Big brands.
             <br />
             <span className="relative inline-block pb-[0.32em]">
