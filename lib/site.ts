@@ -82,7 +82,7 @@ export const site = {
     band: null as string | null,
     gallery: [] as { src: string; alt: string }[],
   },
-  comingSoonNote: 'More stores coming soon across Northern Ireland.',
+  comingSoonNote: 'More stores coming soon.',
 };
 
 // The next store to open (drives the countdown and opening banner), if any.
