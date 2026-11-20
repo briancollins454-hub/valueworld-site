@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { site } from '@/lib/site';
+import type { Store } from '@/lib/site';
 
 // Highlights today's row once the page loads in the browser.
-export default function HoursTable() {
+export default function HoursTable({ store }: { store: Store }) {
   const [today, setToday] = useState<string | null>(null);
   useEffect(() => {
     setToday(new Date().toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'Europe/London' }));
@@ -14,7 +14,7 @@ export default function HoursTable() {
     <table className="w-full text-left text-[17px]">
       <caption className="sr-only">Opening hours</caption>
       <tbody>
-        {site.hours.map((h) => {
+        {store.hours.map((h) => {
           const isToday = h.day === today;
           return (
             <tr key={h.day} className={isToday ? 'bg-brand-light font-bold' : 'border-b border-ink/10 last:border-0'}>

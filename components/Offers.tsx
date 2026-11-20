@@ -1,8 +1,9 @@
 import { Tag } from 'lucide-react';
-import { offers, offersValidUntil, site } from '@/lib/site';
+import { nextOpening, offers, offersValidUntil } from '@/lib/site';
 
-export default function Offers({ limit }: { limit?: number }) {
-  const list = limit ? offers.slice(0, limit) : offers;
+export default function Offers({ limit, store }: { limit?: number; store?: string }) {
+  const forStore = store ? offers.filter((o) => !o.stores || o.stores.includes(store)) : offers;
+  const list = limit ? forStore.slice(0, limit) : forStore;
 
   if (list.length === 0) {
     return (
@@ -11,11 +12,11 @@ export default function Offers({ limit }: { limit?: number }) {
           <Tag size={26} aria-hidden="true" />
         </span>
         <h3 className="mt-4 text-2xl font-black">
-          {site.openingSoon ? 'Opening offers coming soon' : "This week's offers are on the way"}
+          {nextOpening ? 'Opening offers coming soon' : "This week's offers are on the way"}
         </h3>
         <p className="mx-auto mt-2 max-w-md text-ink-soft">
-          {site.openingSoon
-            ? `We open on ${site.openingDate}. Our opening deals will be posted here first.`
+          {nextOpening
+            ? `Our ${nextOpening.town} store opens on ${nextOpening.openingDate}. Opening deals will be posted here first.`
             : 'Pop in to see what is on the shelves today.'}
         </p>
       </div>

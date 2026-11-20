@@ -1,12 +1,20 @@
-import { site } from '@/lib/site';
+import Link from 'next/link';
+import { nextOpening, shortDate, storeUrl } from '@/lib/site';
 
 export default function OpeningBanner() {
-  if (!site.openingSoon) return null;
+  const s = nextOpening;
+  if (!s || !s.openingDate) return null;
   return (
     <div className="bg-leaf text-white">
       <p className="wrap py-1.5 text-center font-display text-[13px] font-extrabold sm:text-[14px]">
-        <span className="sm:hidden">Opening {site.openingDate.replace('Wednesday', 'Wed').replace('November', 'Nov')}</span>
-        <span className="hidden sm:inline">Opening soon: {site.openingDate} on Church Street, Ballymena</span>
+        <Link href={storeUrl(s)} className="underline-offset-4 hover:underline">
+          <span className="sm:hidden">
+            New store: {s.town} opens {shortDate(s.openingDate)}
+          </span>
+          <span className="hidden sm:inline">
+            New store: Value World {s.town} opens {s.openingDate}, {s.address.line1}
+          </span>
+        </Link>
       </p>
     </div>
   );

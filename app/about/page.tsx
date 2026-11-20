@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'About us',
-  description: 'Value World brings big brands at small prices to Church Street, Ballymena.',
+  description: 'Value World brings big brands at small prices to local high streets.',
 };
 
 // TODO: replace the story paragraphs with Pat's own words. The right-hand panel switches to the
@@ -18,15 +18,15 @@ export default function AboutPage() {
       <section className="wrap grid gap-10 pt-12 lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-5 text-lg leading-relaxed text-ink-soft">
           <p>
-            Value World is a discount store packed with the brands you know at prices that make the weekly shop go further. Our Ballymena shop sits at 155 Church Street, in the old Bank of Ireland building beside the bandstand.
+            Value World is a discount store packed with the brands you know at prices that make the weekly shop go further. Every store looks and feels the same, so you always know what you&apos;ll find.
           </p>
           <p>
             Inside you&apos;ll find household and cleaning essentials, health and beauty, toys, art and stationery, cards, sweets and cold drinks, plus fresh bean-to-cup coffee and hot food to go.
           </p>
-          <p>We&apos;re a local team serving local people, and we&apos;re here seven days a week.</p>
+          <p>Each store is run by a local team serving local people. {site.comingSoonNote}</p>
           <div className="pt-2">
-            <Link href="/opening-hours/" className="btn-brand">
-              Opening hours and directions
+            <Link href="/stores/" className="btn-brand">
+              Find your nearest store
             </Link>
           </div>
         </div>

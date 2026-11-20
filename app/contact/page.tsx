@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Mail, Phone } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Mail, Phone } from 'lucide-react';
 import PageHead from '@/components/PageHead';
 import ContactForm from '@/components/ContactForm';
-import MapCard from '@/components/MapCard';
-import { site } from '@/lib/site';
+import { site, storeUrl, stores } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Value World Ballymena, 155 Church Street, Ballymena BT43 6DG.',
+  description: 'Get in touch with Value World.',
 };
 
 export default function ContactPage() {
@@ -19,15 +19,6 @@ export default function ContactPage() {
           <ContactForm />
         </div>
         <div className="space-y-4">
-          {site.phone && (
-            <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="flex items-center gap-4 rounded-3xl bg-brand p-6 text-white hover:bg-brand-dark">
-              <Phone size={26} aria-hidden="true" />
-              <span>
-                <span className="block text-sm font-semibold uppercase tracking-wide text-white/75">Call the shop</span>
-                <span className="font-display text-2xl font-black">{site.phone}</span>
-              </span>
-            </a>
-          )}
           <a href={`mailto:${site.email}`} className="flex items-center gap-4 rounded-3xl bg-paper-warm p-6 hover:bg-sun/30">
             <Mail size={26} className="shrink-0 text-brand" aria-hidden="true" />
             <span className="min-w-0">
@@ -35,7 +26,29 @@ export default function ContactPage() {
               <span className="block break-all font-display text-lg font-extrabold">{site.email}</span>
             </span>
           </a>
-          <MapCard />
+          <div className="rounded-3xl border border-ink/10 bg-white p-6">
+            <h2 className="font-display text-lg font-extrabold">Our stores</h2>
+            <ul className="mt-3 divide-y divide-ink/10">
+              {stores.map((s) => (
+                <li key={s.slug} className="flex items-center justify-between gap-4 py-3">
+                  <span>
+                    <span className="block font-display text-lg font-extrabold">{s.town}</span>
+                    <span className="text-[15px] text-ink-soft">
+                      {s.address.line1}, {s.address.postcode}
+                    </span>
+                    {s.phone && (
+                      <a href={`tel:${s.phone.replace(/\s/g, '')}`} className="mt-1 flex items-center gap-1.5 text-[15px] font-semibold text-brand">
+                        <Phone size={15} aria-hidden="true" /> {s.phone}
+                      </a>
+                    )}
+                  </span>
+                  <Link href={storeUrl(s)} className="inline-flex shrink-0 items-center gap-1 font-display font-extrabold text-brand hover:underline">
+                    Details <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="rounded-3xl border border-ink/10 bg-white p-6 text-[15px] leading-relaxed">
             <h2 className="font-display text-lg font-extrabold">Company details</h2>
             <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-ink-soft">

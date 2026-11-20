@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X, Phone, MapPin } from 'lucide-react';
+import { Menu, X, MapPin } from 'lucide-react';
 import Logo from './Logo';
-import { nav, site } from '@/lib/site';
+import { nav } from '@/lib/site';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-white/95 backdrop-blur">
       <div className="wrap flex h-[60px] items-center sm:h-[68px] justify-between gap-4">
-        <Link href="/" aria-label="Value World Ballymena, home" onClick={() => setOpen(false)}>
+        <Link href="/" aria-label="Value World, home" onClick={() => setOpen(false)}>
           <Logo />
         </Link>
 
@@ -40,15 +40,9 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {site.phone ? (
-            <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="btn-brand hidden px-5 sm:inline-flex">
-              <Phone size={18} aria-hidden="true" /> Call us
-            </a>
-          ) : (
-            <a href={site.directions} target="_blank" rel="noopener" className="btn-brand hidden px-5 sm:inline-flex">
-              <MapPin size={18} aria-hidden="true" /> Directions
-            </a>
-          )}
+          <Link href="/stores/" className="btn-brand hidden px-5 sm:inline-flex">
+            <MapPin size={18} aria-hidden="true" /> Find a store
+          </Link>
           <button
             type="button"
             className="grid h-11 w-11 place-items-center rounded-full border-2 border-ink/10 lg:hidden"
@@ -76,15 +70,10 @@ export default function Header() {
                 </Link>
               </li>
             ))}
-            <li className="mt-2 flex gap-2 px-1 pb-2">
-              {site.phone && (
-                <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="btn-brand flex-1">
-                  <Phone size={18} aria-hidden="true" /> Call
-                </a>
-              )}
-              <a href={site.directions} target="_blank" rel="noopener" className="btn-sun flex-1">
-                <MapPin size={18} aria-hidden="true" /> Directions
-              </a>
+            <li className="mt-2 px-1 pb-2">
+              <Link href="/stores/" onClick={() => setOpen(false)} className="btn-brand w-full">
+                <MapPin size={18} aria-hidden="true" /> Find a store
+              </Link>
             </li>
           </ul>
         </nav>

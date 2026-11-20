@@ -1,15 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { site } from '@/lib/site';
+import { nextOpening, type Store } from '@/lib/site';
 
 function parts(ms: number) {
   const s = Math.max(0, Math.floor(ms / 1000));
   return { days: Math.floor(s / 86400), hrs: Math.floor((s % 86400) / 3600), mins: Math.floor((s % 3600) / 60), secs: s % 60 };
 }
 
-export default function Countdown() {
-  const target = Date.parse(site.openingAt);
+export default function Countdown({ store = nextOpening, label }: { store?: Store | null; label?: string }) {
+  const target = store?.openingAt ? Date.parse(store.openingAt) : NaN;
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function Countdown() {
     return () => clearInterval(t);
   }, []);
 
-  if (!site.openingSoon) return null;
+  if (!store || Number.isNaN(target)) return null;
 
   if (now !== null && now >= target) {
     return (
@@ -27,7 +27,7 @@ export default function Countdown() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sun opacity-75" />
           <span className="relative inline-flex h-3 w-3 rounded-full bg-sun" />
         </span>
-        Now open on Church Street
+        Now open in {store.town}
       </p>
     );
   }
@@ -42,8 +42,8 @@ export default function Countdown() {
 
   return (
     <div>
-      <p className="font-display text-[12px] font-extrabold uppercase tracking-[0.14em] text-white/80">Doors open in</p>
-      <div className="mt-2 flex gap-2 sm:gap-2.5" role="timer" aria-label={`Opening ${site.openingDate}`}>
+      <p className="font-display text-[12px] font-extrabold uppercase tracking-[0.14em] text-white/80">{label ?? `${store.town} opens in`}</p>
+      <div className="mt-2 flex gap-2 sm:gap-2.5" role="timer" aria-label={`${store.town} opens ${store.openingDate ?? ''}`}>
         {cells.map(([label, v]) => (
           <div key={label} className="w-[62px] rounded-xl bg-white/10 py-2 text-center ring-1 ring-white/20 backdrop-blur sm:w-[78px]">
             <span className="block font-display text-[26px] font-black leading-none tabular-nums text-white sm:text-[30px]" aria-hidden="true">

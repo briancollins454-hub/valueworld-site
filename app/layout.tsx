@@ -12,39 +12,26 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: 'Value World Ballymena | Big brands, small prices on Church Street',
-    template: '%s | Value World Ballymena',
+    default: 'Value World | Big brands, small prices',
+    template: '%s | Value World',
   },
   description:
-    'Value World Ballymena at 155 Church Street: household, cleaning, health and beauty, toys, art and stationery, cards, sweets, drinks and hot food and coffee, all at low prices.',
-  openGraph: { type: 'website', locale: 'en_GB', siteName: 'Value World Ballymena', images: ['/logo.png'] },
+    'Value World discount stores: household, cleaning, health and beauty, toys, art and stationery, cards, sweets, drinks and hot food and coffee, all at low prices.',
+  openGraph: { type: 'website', locale: 'en_GB', siteName: 'Value World', images: ['/logo.png'] },
   icons: { icon: '/icon.png', apple: '/apple-touch-icon.png' },
 };
 
 export const viewport: Viewport = { themeColor: '#e1061b' };
 
-const storeSchema = {
+const orgSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Store',
-  name: 'Value World Ballymena',
+  '@type': 'Organization',
+  name: 'Value World',
   legalName: site.company.name,
   identifier: { '@type': 'PropertyValue', propertyID: 'Companies House (Northern Ireland)', value: site.company.number },
   url: site.url,
+  logo: `${site.url}/logo.png`,
   email: site.email,
-  ...(site.phone ? { telephone: site.phone } : {}),
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.address.line1,
-    addressLocality: site.address.town,
-    postalCode: site.address.postcode,
-    addressCountry: site.address.country,
-  },
-  openingHoursSpecification: site.hoursSchema.map((h) => ({
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: h.days,
-    opens: h.opens,
-    closes: h.closes,
-  })),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -60,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <MobileBar />
         <RevealInit />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(storeSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </body>
     </html>
   );

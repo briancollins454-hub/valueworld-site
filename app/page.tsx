@@ -1,14 +1,13 @@
 import Link from 'next/link';
-import { ArrowRight, Clock, MapPin } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Hero from '@/components/Hero';
 import Ticker from '@/components/Ticker';
 import Departments from '@/components/Departments';
 import Offers from '@/components/Offers';
 import BrandBand from '@/components/BrandBand';
 import Gallery from '@/components/Gallery';
-import HoursTable from '@/components/HoursTable';
-import MapCard from '@/components/MapCard';
-import { site } from '@/lib/site';
+import StoreCard, { ComingSoonCard } from '@/components/StoreCard';
+import { site, stores } from '@/lib/site';
 
 export default function Home() {
   return (
@@ -53,29 +52,25 @@ export default function Home() {
       <BrandBand />
       <Gallery />
 
-      {/* Visit */}
+      {/* Stores */}
       <section className="wrap pt-24 sm:pt-32">
-        <p data-reveal className="eyebrow">Visit us</p>
-        <h2 data-reveal style={{ ['--d' as string]: '60ms' }} className="h-section mt-2">
-          Right on Church Street
-        </h2>
-        <div className="mt-10 grid gap-5 lg:grid-cols-[1fr_1.4fr]">
-          <div data-reveal className="flex flex-col rounded-[28px] border border-ink/10 bg-white p-4 sm:p-6">
-            <h3 className="flex items-center gap-2 px-4 pt-2 text-2xl font-black">
-              <Clock size={22} className="text-brand" aria-hidden="true" /> Opening hours
-            </h3>
-            <div className="mt-3">
-              <HoursTable />
-            </div>
-            <p className="mt-auto flex items-start gap-2 px-4 pb-2 pt-4 text-[15px] text-ink-soft">
-              <MapPin size={18} className="mt-0.5 shrink-0 text-brand" aria-hidden="true" />
-              In the old Bank of Ireland building, beside the bandstand on {site.address.line1.replace('155 ', '')}.
-            </p>
+        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p data-reveal className="eyebrow">Our stores</p>
+            <h2 data-reveal style={{ ['--d' as string]: '60ms' }} className="h-section mt-2">
+              Find your nearest Value World
+            </h2>
           </div>
-          <div data-reveal style={{ ['--d' as string]: '100ms' }}>
-            <MapCard />
-          </div>
+          <Link href="/stores/" className="inline-flex items-center gap-1.5 font-display text-lg font-extrabold text-brand hover:underline">
+            All stores <ArrowRight size={20} aria-hidden="true" />
+          </Link>
         </div>
+        <ul className="grid gap-4 md:grid-cols-2">
+          {stores.map((s, i) => (
+            <StoreCard key={s.slug} store={s} i={i} />
+          ))}
+          <ComingSoonCard note={site.comingSoonNote} />
+        </ul>
       </section>
     </>
   );

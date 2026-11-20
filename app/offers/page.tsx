@@ -4,7 +4,7 @@ import Offers from '@/components/Offers';
 
 export const metadata: Metadata = {
   title: 'Offers',
-  description: "This week's deals at Value World Ballymena, 155 Church Street.",
+  description: "This week's deals at Value World.",
 };
 
 export default function OffersPage() {

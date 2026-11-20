@@ -1,0 +1,3 @@
+{
+  "redirects": [{ "source": "/opening-hours/", "destination": "/stores/ballymena/", "permanent": true }, { "source": "/opening-hours", "destination": "/stores/ballymena/", "permanent": true }]
+}
