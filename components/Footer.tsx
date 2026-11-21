@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Facebook, Instagram, Mail, MapPin } from 'lucide-react';
 import Logo from './Logo';
 import { nav, site, storeUrl, stores, shortDate } from '@/lib/site';
+import OpenSwitch from '@/components/OpenSwitch';
 
 export default function Footer() {
   const companies = Array.from(new Map(stores.map((s) => [s.company.number, s.company])).values());
@@ -39,7 +40,11 @@ export default function Footer() {
                   <span className="mt-1 block text-[14px] leading-relaxed text-white/75">
                     {s.address.line1}, {s.address.postcode}
                     {s.status === 'opening-soon' && s.openingDate && (
-                      <span className="mt-1 block font-semibold text-sun">Opens {shortDate(s.openingDate)}</span>
+                      <OpenSwitch
+                        at={s.openingAt}
+                        before={<span className="mt-1 block font-semibold text-sun">Opens {shortDate(s.openingDate)}</span>}
+                        after={<span className="mt-1 block font-semibold text-sun">Open now</span>}
+                      />
                     )}
                   </span>
                 </Link>

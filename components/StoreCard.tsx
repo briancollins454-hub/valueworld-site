@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, Clock, MapPin } from 'lucide-react';
+import OpenSwitch from '@/components/OpenSwitch';
 import { shortDate, storeUrl, type Store } from '@/lib/site';
 
 export default function StoreCard({ store, i = 0 }: { store: Store; i?: number }) {
@@ -16,9 +17,15 @@ export default function StoreCard({ store, i = 0 }: { store: Store; i?: number }
         <img src="/logo.png" alt="" aria-hidden="true" className="absolute right-5 top-5 h-16 w-16 rotate-6 transition-transform duration-500 group-hover:rotate-0 sm:h-20 sm:w-20" />
 
         {store.status === 'opening-soon' && store.openingDate && (
-          <span className="self-start rounded-full bg-sun px-3 py-1 font-display text-[13px] font-extrabold text-ink">
-            Opens {shortDate(store.openingDate)}
-          </span>
+          <OpenSwitch
+            at={store.openingAt}
+            before={
+              <span className="self-start rounded-full bg-sun px-3 py-1 font-display text-[13px] font-extrabold text-ink">
+                Opens {shortDate(store.openingDate)}
+              </span>
+            }
+            after={<span className="self-start rounded-full bg-leaf px-3 py-1 font-display text-[13px] font-extrabold">Open now</span>}
+          />
         )}
         {store.status === 'open' && <span className="self-start rounded-full bg-leaf px-3 py-1 font-display text-[13px] font-extrabold">Open now</span>}
         {store.status === 'coming-soon' && <span className="self-start rounded-full bg-white/15 px-3 py-1 font-display text-[13px] font-extrabold">Coming soon</span>}

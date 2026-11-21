@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { MapPin, Tag } from 'lucide-react';
 import Countdown from './Countdown';
 import { nextOpening, shortDate, site } from '@/lib/site';
+import OpenSwitch from '@/components/OpenSwitch';
 
 const tags = [
   { label: 'Toys', cls: 'left-[2%] top-[14%] bg-sun text-ink', r: '-10deg', d: '0s' },
@@ -57,13 +58,25 @@ export default function Hero() {
             <p className="inline-flex animate-rise flex-wrap items-center gap-x-2 gap-y-0.5 rounded-2xl bg-white/10 px-3.5 py-1.5 font-display text-[12px] font-extrabold uppercase tracking-[0.14em] ring-1 ring-white/25 sm:rounded-full sm:text-[13px]">
               <span className="h-2 w-2 rounded-full bg-sun" aria-hidden="true" />
               {nextOpening && nextOpening.openingDate ? (
-                <>
-                  <span className="sm:hidden">New store · {nextOpening.town}</span>
-                  <span className="basis-full pl-4 text-sun sm:hidden">Opens {shortDate(nextOpening.openingDate)}</span>
-                  <span className="hidden sm:inline">
-                    New store · {nextOpening.town} · {nextOpening.openingDate}
-                  </span>
-                </>
+                <OpenSwitch
+                  at={nextOpening.openingAt}
+                  before={
+                    <>
+                      <span className="sm:hidden">New store · {nextOpening.town}</span>
+                      <span className="basis-full pl-4 text-sun sm:hidden">Opens {shortDate(nextOpening.openingDate)}</span>
+                      <span className="hidden sm:inline">
+                        New store · {nextOpening.town} · {nextOpening.openingDate}
+                      </span>
+                    </>
+                  }
+                  after={
+                    <>
+                      <span className="sm:hidden">New store · {nextOpening.town}</span>
+                      <span className="basis-full pl-4 text-sun sm:hidden">Now open</span>
+                      <span className="hidden sm:inline">Now open · Value World {nextOpening.town}</span>
+                    </>
+                  }
+                />
               ) : (
                 'Value World · Big brands, small prices'
               )}
@@ -83,7 +96,14 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 max-w-xl animate-rise text-[16px] leading-snug text-white/90 [animation-delay:.16s] sm:text-lg">
-            Household, toys, stationery, health and beauty, sweets and fresh coffee, all under one roof.{nextOpening ? ` Our new ${nextOpening.town} store opens on ${nextOpening.address.line1}.` : ''}
+            Household, toys, stationery, health and beauty, sweets and fresh coffee, all under one roof.
+            {nextOpening && (
+              <OpenSwitch
+                at={nextOpening.openingAt}
+                before={` Our new ${nextOpening.town} store opens on ${nextOpening.address.line1}.`}
+                after={` Our new ${nextOpening.town} store is now open on ${nextOpening.address.line1}.`}
+              />
+            )}
           </p>
 
           <div className="mt-5 animate-rise [animation-delay:.24s]">

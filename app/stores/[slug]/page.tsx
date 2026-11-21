@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Clock, Landmark, Mail, Navigation, Phone, Tag } from 'lucide-react';
 import Countdown from '@/components/Countdown';
+import OpenSwitch from '@/components/OpenSwitch';
 import HoursTable from '@/components/HoursTable';
 import MapCard from '@/components/MapCard';
 import Departments from '@/components/Departments';
@@ -93,9 +94,14 @@ export default async function StorePage({ params }: Props) {
             <HoursTable store={s} />
           </div>
           {s.status === 'opening-soon' && s.openingDate && (
-            <p className="mx-4 mt-4 rounded-2xl bg-sun/30 px-4 py-3 text-[15px]">
-              We open on <strong>{s.openingDate}</strong>. These are our regular hours from then on.
-            </p>
+            <OpenSwitch
+              at={s.openingAt}
+              before={
+                <p className="mx-4 mt-4 rounded-2xl bg-sun/30 px-4 py-3 text-[15px]">
+                  We open on <strong>{s.openingDate}</strong>. These are our regular hours from then on.
+                </p>
+              }
+            />
           )}
           {s.landmark && (
             <p className="mt-auto flex items-start gap-2 px-4 pb-2 pt-4 text-[15px] text-ink-soft">

@@ -1,4 +1,5 @@
 import { Tag } from 'lucide-react';
+import OpenSwitch from '@/components/OpenSwitch';
 import { nextOpening, offers, offersValidUntil } from '@/lib/site';
 
 export default function Offers({ limit, store }: { limit?: number; store?: string }) {
@@ -11,14 +12,22 @@ export default function Offers({ limit, store }: { limit?: number; store?: strin
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand text-white">
           <Tag size={26} aria-hidden="true" />
         </span>
-        <h3 className="mt-4 text-2xl font-black">
-          {nextOpening ? 'Opening offers coming soon' : "This week's offers are on the way"}
-        </h3>
-        <p className="mx-auto mt-2 max-w-md text-ink-soft">
-          {nextOpening
-            ? `Our ${nextOpening.town} store opens on ${nextOpening.openingDate}. Opening deals will be posted here first.`
-            : 'Pop in to see what is on the shelves today.'}
-        </p>
+        <OpenSwitch
+          at={nextOpening?.openingAt}
+          before={
+            nextOpening ? (
+              <>
+                <h3 className="mt-4 text-2xl font-black">Opening offers coming soon</h3>
+                <p className="mx-auto mt-2 max-w-md text-ink-soft">
+                  Our {nextOpening.town} store opens on {nextOpening.openingDate}. Opening deals will be posted here first.
+                </p>
+              </>
+            ) : (
+              <EmptyOpen />
+            )
+          }
+          after={<EmptyOpen />}
+        />
       </div>
     );
   }
@@ -48,6 +57,15 @@ export default function Offers({ limit, store }: { limit?: number; store?: strin
         ))}
       </ul>
       {offersValidUntil && <p className="mt-4 text-sm text-ink-soft">Offers run until {offersValidUntil}, while stocks last.</p>}
+    </>
+  );
+}
+
+function EmptyOpen() {
+  return (
+    <>
+      <h3 className="mt-4 text-2xl font-black">This week&apos;s offers are on the way</h3>
+      <p className="mx-auto mt-2 max-w-md text-ink-soft">Pop in to see what&apos;s on the shelves today.</p>
     </>
   );
 }
