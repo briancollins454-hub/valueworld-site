@@ -123,3 +123,8 @@ export type Offer = {
 // TODO: offers from Pat. While empty, the site shows a "coming soon" panel.
 export const offers: Offer[] = [];
 export const offersValidUntil: string | null = null;
+
+// Holding page: while true, every address shows a single "opening soon" page instead of the full site.
+// The full site still builds on Vercel preview links (set NEXT_PUBLIC_FULL_SITE=1 there).
+// To go live, set this to false (or set NEXT_PUBLIC_FULL_SITE=1 for production) and redeploy.
+export const holding = process.env.NEXT_PUBLIC_FULL_SITE !== '1';
