@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowRight, Mail, Phone } from 'lucide-react';
 import PageHead from '@/components/PageHead';
 import ContactForm from '@/components/ContactForm';
 import { site, storeUrl, stores } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Get in touch with Value World.',
-};
+export const metadata: Metadata = pageMeta({
+  path: '/contact/',
+  title: 'Contact Us',
+  description:
+    'Get in touch with Value World about stock, opening times or anything else. Find our store addresses and company details.',
+});
 
 export default function ContactPage() {
   return (

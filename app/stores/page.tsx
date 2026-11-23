@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
+import { pageMeta } from '@/lib/seo';
 import PageHead from '@/components/PageHead';
 import StoreCard, { ComingSoonCard } from '@/components/StoreCard';
 import { site, stores } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'Our stores',
-  description: `Find your nearest Value World store: ${stores.map((s) => s.town).join(', ')}. Opening hours, addresses and directions.`,
-};
+export const metadata: Metadata = pageMeta({
+  path: '/stores/',
+  title: 'Our Stores',
+  description:
+    `Find your nearest Value World discount shop: ${stores.map((s) => s.town).join(', ')}. Opening hours, addresses and directions.`,
+});
 
 export default function StoresPage() {
   return (

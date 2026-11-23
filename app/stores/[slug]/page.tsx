@@ -10,6 +10,7 @@ import Departments from '@/components/Departments';
 import Offers from '@/components/Offers';
 import { shortDate, stores } from '@/lib/site';
 import { storeSchema } from '@/lib/schema';
+import { pageMeta } from '@/lib/seo';
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -22,10 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = stores.find((x) => x.slug === slug);
   if (!s) return {};
-  return {
-    title: `${s.town} store`,
-    description: `Value World ${s.town}, ${s.address.line1}, ${s.address.town} ${s.address.postcode}. Opening hours, directions and offers.`,
-  };
+  return pageMeta({
+    path: `/stores/${s.slug}/`,
+    title: `Value World ${s.town} | Discount Shop, ${s.address.line1}`,
+    absoluteTitle: true,
+    description: `Value World ${s.town} is a discount shop at ${s.address.line1}, ${s.address.town} ${s.address.postcode}${s.landmark ? ', ' + s.landmark.replace(/^In /, 'in ').replace(/\.$/, '') : ''}. Big brands at small prices. Opening hours, directions and offers.`,
+  });
 }
 
 export default async function StorePage({ params }: Props) {

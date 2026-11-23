@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import PageHead from '@/components/PageHead';
 import Departments from '@/components/Departments';
 import { site } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'About us',
-  description: 'Value World brings big brands at small prices to local high streets.',
-};
+export const metadata: Metadata = pageMeta({
+  path: '/about/',
+  title: 'About Us',
+  description:
+    'Value World is a discount shop bringing big brands at small prices to local high streets, starting with Church Street, Ballymena.',
+});
 
 // TODO: replace the story paragraphs with Pat's own words. The right-hand panel switches to the
 // first four gallery photos once they're added in lib/site.ts.

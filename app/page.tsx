@@ -8,6 +8,15 @@ import BrandBand from '@/components/BrandBand';
 import Gallery from '@/components/Gallery';
 import StoreCard, { ComingSoonCard } from '@/components/StoreCard';
 import { site, stores } from '@/lib/site';
+import { pageMeta } from '@/lib/seo';
+
+export const metadata = pageMeta({
+  path: '/',
+  title: 'Value World | Discount Shop in Ballymena',
+  absoluteTitle: true,
+  description:
+    'Value World is a discount shop on Church Street, Ballymena. Big brands at small prices: household, cleaning, toys, health and beauty, sweets, drinks and fresh coffee.',
+});
 
 export default function Home() {
   return (

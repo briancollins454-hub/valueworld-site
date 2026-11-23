@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   },
   description:
     'Value World discount stores: household, cleaning, health and beauty, toys, art and stationery, cards, sweets, drinks and hot food and coffee, all at low prices.',
-  openGraph: { type: 'website', locale: 'en_GB', siteName: 'Value World', images: ['/logo.png'] },
+  openGraph: { type: 'website', locale: 'en_GB', siteName: 'Value World', images: [{ url: '/og.png', width: 1200, height: 630 }] },
+  twitter: { card: 'summary_large_image', images: ['/og.png'] },
   icons: { icon: '/icon.png', apple: '/apple-touch-icon.png' },
   // Keep search engines from indexing the holding page.
   ...(holding ? { robots: { index: false, follow: false } } : {}),
@@ -35,6 +36,7 @@ const orgSchema = {
   url: site.url,
   logo: `${site.url}/logo.png`,
   email: site.email,
+  sameAs: [site.social.facebook, site.social.instagram].filter(Boolean),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

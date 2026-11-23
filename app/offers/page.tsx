@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
+import { pageMeta } from '@/lib/seo';
 import PageHead from '@/components/PageHead';
 import Offers from '@/components/Offers';
 
-export const metadata: Metadata = {
-  title: 'Offers',
-  description: "This week's deals at Value World.",
-};
+export const metadata: Metadata = pageMeta({
+  path: '/offers/',
+  title: 'Offers and Deals',
+  description:
+    "This week's deals at Value World: big brand household, cleaning, toys, health and beauty, sweets and drinks at small prices, in store in Ballymena.",
+});
 
 export default function OffersPage() {
   return (

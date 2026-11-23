@@ -13,6 +13,7 @@ export type Store = {
   openingAt?: string; // the countdown target, ISO time (UK time in winter = UTC)
   address: { line1: string; town: string; postcode: string; country: 'GB' | 'IE' };
   landmark?: string;
+  geo?: { lat: number; lng: number }; // map pin for Google
   phone: string | null;
   email: string;
   hours: Hours;
@@ -41,6 +42,7 @@ export const stores: Store[] = [
     openingAt: '2026-11-25T09:00:00Z', // TODO: confirm opening time
     address: { line1: '155 Church Street', town: 'Ballymena', postcode: 'BT43 6DG', country: 'GB' },
     landmark: 'In the old Bank of Ireland building, beside the bandstand.',
+    geo: { lat: 54.8663938, lng: -6.2734897 },
     phone: null, // TODO: shop phone number
     email: 'valueworldnorthernireland@gmail.com',
     // TODO: confirm hours. These are the hours in the opening plan, not yet confirmed.
