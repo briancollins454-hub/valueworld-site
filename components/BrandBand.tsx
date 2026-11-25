@@ -18,7 +18,7 @@ export default function BrandBand() {
           Proudly local
         </p>
         <p data-reveal style={{ ['--d' as string]: '80ms' }} className="mt-4 max-w-4xl font-display text-[40px] font-black leading-[1] tracking-tight sm:text-[72px]">
-          Everyday essentials, big-name brands, <span className="text-brand-logo">prices that make sense.</span>
+          Everyday essentials, big-name brands, <span className={photo ? 'text-sun' : 'text-brand-logo'}>prices that make sense.</span>
         </p>
         <div data-reveal style={{ ['--d' as string]: '160ms' }} className="mt-10 grid max-w-3xl grid-cols-3 gap-4 border-t border-white/15 pt-8">
           <div>

@@ -38,15 +38,14 @@ export const stores: Store[] = [
     slug: 'ballymena',
     town: 'Ballymena',
     status: 'opening-soon', // switch to 'open' after opening day
-    // Opening date not confirmed (was Wed 25 Nov, didn't happen). Add both back once Pat confirms:
-    // openingDate: 'Wednesday 25 November',
-    // openingAt: '2026-11-25T09:00:00Z',
+    openingDate: 'Friday 27 November',
+    openingAt: '2026-11-27T07:00:00Z', // doors open 7am (UK time = UTC in winter)
     address: { line1: '155 Church Street', town: 'Ballymena', postcode: 'BT43 6DG', country: 'GB' },
     landmark: 'In the old Bank of Ireland building, beside the bandstand.',
     geo: { lat: 54.8663938, lng: -6.2734897 },
     phone: null, // TODO: shop phone number
     email: 'valueworldnorthernireland@gmail.com',
-    // TODO: confirm hours. These are the hours in the opening plan, not yet confirmed.
+    // Confirmed by Pat: Mon to Sat 7am to 7pm, Sunday 1pm to 6pm.
     hours: [
       { day: 'Monday', open: '7am', close: '7pm' },
       { day: 'Tuesday', open: '7am', close: '7pm' },
@@ -62,7 +61,7 @@ export const stores: Store[] = [
     ],
     mapEmbed: 'https://maps.google.com/maps?q=155%20Church%20Street%2C%20Ballymena%20BT43%206DG&z=17&output=embed',
     directions: 'https://www.google.com/maps/dir/?api=1&destination=155%20Church%20Street%2C%20Ballymena%20BT43%206DG',
-    photos: { hero: null, band: null, gallery: [] },
+    photos: { hero: '/photos/ballymena/front.jpg', band: null, gallery: [] },
     company: valueworldNI,
   },
 ];
@@ -82,7 +81,7 @@ export const site = {
   // Brand photos for the home page (best shots from any store). Each section appears once it has photos.
   photos: {
     hero: null as string | null,
-    band: null as string | null,
+    band: '/photos/ballymena/front.jpg' as string | null,
     gallery: [] as { src: string; alt: string }[],
   },
   comingSoonNote: 'More stores coming soon.',
@@ -91,7 +90,7 @@ export const site = {
 // The next store to open (drives the countdown and opening banner), if any.
 export const nextOpening = stores.find((s) => s.status === 'opening-soon' && s.openingAt) ?? null;
 export const storeUrl = (s: Store) => `/stores/${s.slug}/`;
-export const shortDate = (d: string) => d.replace('Wednesday', 'Wed').replace('Thursday', 'Thu').replace('Saturday', 'Sat').replace('November', 'Nov').replace('December', 'Dec');
+export const shortDate = (d: string) => d.replace('Wednesday', 'Wed').replace('Friday', 'Fri').replace('Thursday', 'Thu').replace('Saturday', 'Sat').replace('November', 'Nov').replace('December', 'Dec');
 
 export const nav = [
   { label: 'Home', href: '/' },
@@ -123,8 +122,12 @@ export type Offer = {
   stores?: string[]; // store slugs; leave out for offers in every store
 };
 
-// TODO: offers from Pat. While empty, the site shows a "coming soon" panel.
-export const offers: Offer[] = [];
+// Hot food prices from the in-store sign. Add more offers from Pat here.
+export const offers: Offer[] = [
+  { name: 'Hot food snack pot', price: '£3.99', badge: 'New in', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
+  { name: 'Hot food lunch pot', price: '£4.99', badge: 'New in', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
+  { name: 'Hot food sharing pot', price: '£6.99', badge: 'New in', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
+];
 export const offersValidUntil: string | null = null;
 
 // Holding page: while true, every address shows a single "opening soon" page instead of the full site.

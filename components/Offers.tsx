@@ -1,4 +1,4 @@
-import { Tag } from 'lucide-react';
+import { Tag, UtensilsCrossed } from 'lucide-react';
 import OpenSwitch from '@/components/OpenSwitch';
 import { nextOpening, offers, offersValidUntil } from '@/lib/site';
 
@@ -38,7 +38,14 @@ export default function Offers({ limit, store }: { limit?: number; store?: strin
         {list.map((o) => (
           <li key={o.name} className="overflow-hidden rounded-3xl border border-ink/10 bg-white">
             <div className="relative aspect-[4/3] bg-paper-warm">
-              {o.image && <img src={o.image} alt="" className="h-full w-full object-cover" />}
+              {o.image ? (
+                <img src={o.image} alt="" className="h-full w-full object-cover" />
+              ) : (
+                <div className="relative grid h-full w-full place-items-center overflow-hidden bg-brand text-white">
+                  <div className="dots absolute inset-0 opacity-50" />
+                  <UtensilsCrossed size={44} className="relative" aria-hidden="true" />
+                </div>
+              )}
               {o.badge && (
                 <span className="absolute left-3 top-3 rounded-full bg-sun px-3 py-1 font-display text-[13px] font-extrabold">
                   {o.badge}
