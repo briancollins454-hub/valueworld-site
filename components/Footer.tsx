@@ -78,7 +78,12 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-          <p>© {new Date().getFullYear()} {site.company.name}</p>
+          <p>
+            © {new Date().getFullYear()} {site.company.name} · Website by{" "}
+            <a href="https://www.thesupportsdesk.com" className="underline underline-offset-2 hover:text-white">
+              The Supports Desk
+            </a>
+          </p>
         </div>
         <div className="wrap space-y-1 pb-24 text-[12px] leading-relaxed text-white/50 lg:pb-6">
           {companies.map((c) => (
