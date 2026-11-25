@@ -58,6 +58,11 @@ export default function Holding() {
 
       <footer className="wrap pb-6 text-center text-[12px] leading-relaxed text-white/65">
         Value World is a trading name of {site.company.name}, registered in {site.company.registeredIn}, company number {site.company.number}. Registered office: {site.company.registeredOffice}.
+        <br />
+        Website by{" "}
+        <a href="https://www.thesupportsdesk.com" className="underline underline-offset-2 hover:text-white">
+          The Supports Desk
+        </a>
       </footer>
     </div>
   );
