@@ -36,7 +36,7 @@ export default function Shops({ exclude }: { exclude?: string }) {
           <li key={s.slug} data-reveal style={{ ['--d' as string]: `${(i % 4) * 70}ms` }} className={big ? 'col-span-2' : ''}>
             <Link
               href={shopUrl(s)}
-              className={`lift group relative isolate flex h-full min-h-[190px] flex-col justify-end overflow-hidden rounded-[28px] p-5 sm:min-h-[240px] sm:p-7 ${shopLooks[s.slug]}`}
+              className={`lift group relative isolate flex h-full min-h-[190px] flex-col justify-end overflow-hidden rounded-[28px] p-4 sm:min-h-[240px] sm:p-7 ${shopLooks[s.slug]}`}
             >
               <Icon
                 aria-hidden="true"
@@ -47,7 +47,7 @@ export default function Shops({ exclude }: { exclude?: string }) {
                 {String(shops.indexOf(s) + 1).padStart(2, '0')}
               </span>
               <ArrowUpRight size={22} aria-hidden="true" className="absolute right-5 top-5 opacity-70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:right-7 sm:top-7" />
-              <h3 className="font-display text-[22px] font-black leading-tight text-current sm:text-[28px]">{s.name}</h3>
+              <h3 className="font-display text-[clamp(17px,4.8vw,22px)] font-black leading-tight text-current sm:text-[28px]">{s.name}</h3>
               <p className="mt-1.5 max-w-xs text-[14px] leading-snug opacity-85 sm:text-[15px]">{s.tagline}</p>
             </Link>
           </li>
