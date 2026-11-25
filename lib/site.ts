@@ -38,8 +38,9 @@ export const stores: Store[] = [
     slug: 'ballymena',
     town: 'Ballymena',
     status: 'opening-soon', // switch to 'open' after opening day
-    openingDate: 'Wednesday 25 November',
-    openingAt: '2026-11-25T09:00:00Z', // TODO: confirm opening time
+    // Opening date not confirmed (was Wed 25 Nov, didn't happen). Add both back once Pat confirms:
+    // openingDate: 'Wednesday 25 November',
+    // openingAt: '2026-11-25T09:00:00Z',
     address: { line1: '155 Church Street', town: 'Ballymena', postcode: 'BT43 6DG', country: 'GB' },
     landmark: 'In the old Bank of Ireland building, beside the bandstand.',
     geo: { lat: 54.8663938, lng: -6.2734897 },

@@ -32,7 +32,7 @@ export default function Holding() {
         <p className="mt-5 max-w-md animate-rise text-[17px] leading-snug text-white/90 [animation-delay:.16s] sm:text-lg">
           <OpenSwitch
             at={s.openingAt}
-            before={<>Value World {s.town} opens on {s.openingDate}. Our full website is on the way.</>}
+            before={<>Value World {s.town} {s.openingDate ? `opens on ${s.openingDate}` : 'is opening soon'}. Our full website is on the way.</>}
             after={<>Value World {s.town} is now open. Our full website is on the way.</>}
           />
         </p>
