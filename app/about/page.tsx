@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import PageHead from '@/components/PageHead';
-import Departments from '@/components/Departments';
+import Shops from '@/components/Shops';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = pageMeta({
@@ -24,7 +24,7 @@ export default function AboutPage() {
             Value World is a discount store packed with the brands you know at prices that make the weekly shop go further. Every store looks and feels the same, so you always know what you&apos;ll find.
           </p>
           <p>
-            Inside you&apos;ll find household and cleaning essentials, health and beauty, toys, art and stationery, cards, sweets and cold drinks, plus fresh bean-to-cup coffee and hot food to go.
+            Every store is seven shops under one roof: Grocery, Non Grocery, Toys, a Poundshop, Stationery, Convenience with fresh coffee and hot food to go, and a Card and Gift Shop.
           </p>
           <p>Each store is run by a local team serving local people. {site.comingSoonNote}</p>
           <div className="pt-2">
@@ -52,8 +52,8 @@ export default function AboutPage() {
       </section>
 
       <section className="wrap pt-16">
-        <h2 className="mb-8 text-[34px] font-black leading-tight sm:text-[40px]">What we stock</h2>
-        <Departments />
+        <h2 className="mb-8 text-[34px] font-black leading-tight sm:text-[40px]">Seven shops under one roof</h2>
+        <Shops />
       </section>
     </>
   );

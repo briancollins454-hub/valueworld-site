@@ -1,4 +1,4 @@
-const items = ['Big brands', 'Small prices', 'Toys & games', 'Household', 'Health & beauty', 'Art & stationery', 'Coffee to go', 'Sweets & snacks', 'Cards & gifts', 'Church Street, Ballymena'];
+const items = ['7 shops. 1 store.', 'Grocery', 'Non Grocery', 'Toys', 'Poundshop', 'Stationery', 'Convenience', 'Card and Gift Shop', 'Big brands. Small prices.'];
 
 function Row() {
   return (

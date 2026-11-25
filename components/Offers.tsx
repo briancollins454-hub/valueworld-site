@@ -2,8 +2,8 @@ import { Tag, UtensilsCrossed } from 'lucide-react';
 import OpenSwitch from '@/components/OpenSwitch';
 import { nextOpening, offers, offersValidUntil } from '@/lib/site';
 
-export default function Offers({ limit, store }: { limit?: number; store?: string }) {
-  const forStore = store ? offers.filter((o) => !o.stores || o.stores.includes(store)) : offers;
+export default function Offers({ limit, store, shop }: { limit?: number; store?: string; shop?: string }) {
+  const forStore = (store ? offers.filter((o) => !o.stores || o.stores.includes(store)) : offers).filter((o) => !shop || o.shop === shop);
   const list = limit ? forStore.slice(0, limit) : forStore;
 
   if (list.length === 0) {

@@ -23,7 +23,7 @@ export default function BrandBand() {
         <div data-reveal style={{ ['--d' as string]: '160ms' }} className="mt-10 grid max-w-3xl grid-cols-3 gap-4 border-t border-white/15 pt-8">
           <div>
             <p className="font-display text-3xl font-black sm:text-5xl">{departments.length}</p>
-            <p className="mt-1 text-sm text-white/70 sm:text-base">departments under one roof</p>
+            <p className="mt-1 text-sm text-white/70 sm:text-base">shops under one roof</p>
           </div>
           <div>
             <p className="font-display text-3xl font-black sm:text-5xl">{stores.length}</p>

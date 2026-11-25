@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, MapPin, Tag } from 'lucide-react';
+import { LayoutGrid, Mail, MapPin, Tag } from 'lucide-react';
 
 // Sticky action bar on phones.
 export default function MobileBar() {
@@ -9,6 +9,9 @@ export default function MobileBar() {
       <div className="flex">
         <Link href="/stores/" className={`${item} text-brand`}>
           <MapPin size={20} aria-hidden="true" /> Stores
+        </Link>
+        <Link href="/shops/" className={`${item} text-ink`}>
+          <LayoutGrid size={20} aria-hidden="true" /> Shops
         </Link>
         <Link href="/offers/" className={`${item} text-ink`}>
           <Tag size={20} aria-hidden="true" /> Offers

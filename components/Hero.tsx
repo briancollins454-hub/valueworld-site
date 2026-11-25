@@ -96,7 +96,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 max-w-xl animate-rise text-[16px] leading-snug text-white/90 [animation-delay:.16s] sm:text-lg">
-            Household, toys, stationery, health and beauty, sweets and fresh coffee, all under one roof.
+            Seven shops under one roof: grocery, household, toys, a pound shop, stationery, convenience and a card and gift shop.
             {nextOpening && (
               <OpenSwitch
                 at={nextOpening.openingAt}

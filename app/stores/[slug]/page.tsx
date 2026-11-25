@@ -6,7 +6,7 @@ import Countdown from '@/components/Countdown';
 import OpenSwitch from '@/components/OpenSwitch';
 import HoursTable from '@/components/HoursTable';
 import MapCard from '@/components/MapCard';
-import Departments from '@/components/Departments';
+import Shops from '@/components/Shops';
 import Offers from '@/components/Offers';
 import { shortDate, stores } from '@/lib/site';
 import { storeSchema } from '@/lib/schema';
@@ -140,13 +140,13 @@ export default async function StorePage({ params }: Props) {
         <Offers limit={6} store={s.slug} />
       </section>
 
-      {/* Departments */}
+      {/* The seven shops */}
       <section className="wrap pt-20">
-        <p data-reveal className="eyebrow">In store</p>
+        <p data-reveal className="eyebrow">7 shops. 1 store.</p>
         <h2 data-reveal className="h-section mb-8 mt-2">
-          What you&apos;ll find
+          Seven shops under one roof
         </h2>
-        <Departments />
+        <Shops />
       </section>
 
       {/* Store contact and company */}

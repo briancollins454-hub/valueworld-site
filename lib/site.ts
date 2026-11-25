@@ -94,23 +94,84 @@ export const shortDate = (d: string) => d.replace('Wednesday', 'Wed').replace('F
 
 export const nav = [
   { label: 'Home', href: '/' },
+  { label: 'Our shops', href: '/shops/' },
   { label: 'Offers', href: '/offers/' },
   { label: 'Stores', href: '/stores/' },
   { label: 'About', href: '/about/' },
   { label: 'Contact', href: '/contact/' },
 ];
 
-// The departments, grouped the same way as the shop floor.
-export const departments = [
-  { key: 'coffee', name: 'Hot food & coffee', blurb: 'Fresh coffee from the bean and hot food to go.' },
-  { key: 'chilled', name: 'Drinks & chilled', blurb: 'Cold drinks, ice and chilled favourites.' },
-  { key: 'household', name: 'Household & cleaning', blurb: 'Everything for the kitchen, the wash and the cupboard.' },
-  { key: 'beauty', name: 'Health & beauty', blurb: 'Toiletries and everyday essentials for less.' },
-  { key: 'toys', name: 'Toys', blurb: 'A whole section of toys and games.' },
-  { key: 'stationery', name: 'Art & stationery', blurb: 'School, office and craft supplies.' },
-  { key: 'cards', name: 'Cards & gifts', blurb: 'Cards for every occasion.' },
-  { key: 'sweets', name: 'Sweets & snacks', blurb: 'Treats for the walk home.' },
-] as const;
+// The seven shops inside every Value World, in Pat's order. Each gets its own page at /shops/<slug>/.
+export type Shop = {
+  slug: string;
+  name: string;
+  tagline: string; // short line on the tile
+  blurb: string; // intro on the shop's page
+  items: string[]; // what you'll find
+  seoTitle: string; // Google title (town is added)
+};
+
+export const shops: Shop[] = [
+  {
+    slug: 'grocery',
+    name: 'Grocery',
+    tagline: 'The weekly shop for less.',
+    blurb: 'Big-brand food cupboard favourites at prices that make the weekly shop go further.',
+    items: ['Food cupboard', 'Cereals and breakfast', 'Tins and jars', 'Pasta, rice and sauces', 'Soft drinks and juice', 'Family-size packs'],
+    seoTitle: 'Grocery Shop',
+  },
+  {
+    slug: 'non-grocery',
+    name: 'Non Grocery',
+    tagline: 'Household, cleaning and toiletries.',
+    blurb: 'Everything for the home: cleaning, laundry, kitchenware and toiletries, with the brands you already use.',
+    items: ['Cleaning and laundry', 'Kitchenware and cookware', 'Toiletries', 'Health and beauty', 'Storage and home', 'Paper and kitchen roll'],
+    seoTitle: 'Household and Cleaning Shop',
+  },
+  {
+    slug: 'toys',
+    name: 'Toys',
+    tagline: 'A whole shop of toys and games.',
+    blurb: 'A full toy shop under our roof, from pocket-money treats to birthday and Christmas presents.',
+    items: ['Toys and games', 'Dolls and plush', 'Pocket-money toys', 'Outdoor and active play', 'Arts and crafts kits', 'Christmas gifts'],
+    seoTitle: 'Toy Shop',
+  },
+  {
+    slug: 'poundshop',
+    name: 'Poundshop',
+    tagline: 'Pound shop bargains, every day.',
+    blurb: 'Our pound shop is packed with everyday bits and bobs at pound shop prices.',
+    items: ['Household bits', 'Kitchen gadgets', 'Party bits', 'Seasonal lines', 'Everyday odds and ends'],
+    seoTitle: 'Pound Shop',
+  },
+  {
+    slug: 'stationery',
+    name: 'Stationery',
+    tagline: 'School, office and craft.',
+    blurb: 'Everything for school, the office and the craft table, all in one place.',
+    items: ['School supplies', 'Pens, pencils and paper', 'Office essentials', 'Art and craft', 'Folders and filing', 'Notebooks and diaries'],
+    seoTitle: 'Stationery Shop',
+  },
+  {
+    slug: 'convenience',
+    name: 'Convenience',
+    tagline: 'Hot food, coffee and treats to go.',
+    blurb: 'Grab and go: hot food freshly cooked every day, fresh coffee, ice cream, sweets and cold drinks.',
+    items: ['Hot food to go', 'Fresh coffee', 'Ice cream', 'Sweets and snacks', 'Cold drinks', 'Phone accessories'],
+    seoTitle: 'Convenience Store and Hot Food',
+  },
+  {
+    slug: 'card-and-gift',
+    name: 'Card and Gift Shop',
+    tagline: 'Cards, wrap and gifts for every occasion.',
+    blurb: 'Cards for every occasion, plus gift wrap, bags, balloons and party bits to go with them.',
+    items: ['Cards for every occasion', 'Gift wrap and bags', 'Balloons and party', 'Gifts', 'Christmas cards and wrap'],
+    seoTitle: 'Card and Gift Shop',
+  },
+];
+
+export const shopUrl = (s: Shop) => `/shops/${s.slug}/`;
+export const departments = shops; // older name, kept so nothing breaks
 
 export type Offer = {
   name: string;
@@ -120,13 +181,14 @@ export type Offer = {
   image?: string; // path under /public/offers/
   note?: string;
   stores?: string[]; // store slugs; leave out for offers in every store
+  shop?: string; // which of the seven shops it belongs to (shop slug)
 };
 
 // Hot food prices from the in-store sign. Add more offers from Pat here.
 export const offers: Offer[] = [
-  { name: 'Hot food snack pot', price: '£3.99', badge: 'New in', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
-  { name: 'Hot food lunch pot', price: '£4.99', badge: 'New in', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
-  { name: 'Hot food sharing pot', price: '£6.99', badge: 'New in', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
+  { name: 'Hot food snack pot', price: '£3.99', badge: 'New in', shop: 'convenience', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
+  { name: 'Hot food lunch pot', price: '£4.99', badge: 'New in', shop: 'convenience', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
+  { name: 'Hot food sharing pot', price: '£6.99', badge: 'New in', shop: 'convenience', note: 'Freshly cooked every day. Pick your pot, fill it up, add your sauce.' },
 ];
 export const offersValidUntil: string | null = null;
 
