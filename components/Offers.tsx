@@ -41,9 +41,13 @@ export default function Offers({ limit, store, shop }: { limit?: number; store?:
               {o.image ? (
                 <img src={o.image} alt="" className="h-full w-full object-cover" />
               ) : (
-                <div className="relative grid h-full w-full place-items-center overflow-hidden bg-brand text-white">
-                  <div className="dots absolute inset-0 opacity-50" />
-                  <UtensilsCrossed size={44} className="relative" aria-hidden="true" />
+                <div className="relative flex h-full w-full flex-col justify-between overflow-hidden bg-ink p-4 text-white sm:p-6">
+                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand/90 blur-2xl" aria-hidden="true" />
+                  <div className="absolute -bottom-14 -left-10 h-44 w-44 rounded-full bg-sun/25 blur-2xl" aria-hidden="true" />
+                  <span className="relative ml-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 sm:h-12 sm:w-12">
+                    <UtensilsCrossed size={20} aria-hidden="true" />
+                  </span>
+                  <p className="relative font-display text-[40px] font-black leading-none tracking-tight text-sun sm:text-[64px]">{o.price}</p>
                 </div>
               )}
               {o.badge && (

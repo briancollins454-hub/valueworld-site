@@ -3,13 +3,8 @@ import { MapPin, Tag } from 'lucide-react';
 import Countdown from './Countdown';
 import { nextOpening, shortDate, site } from '@/lib/site';
 import OpenSwitch from '@/components/OpenSwitch';
+import ShopRing from '@/components/ShopRing';
 
-const tags = [
-  { label: 'Toys', cls: 'left-[2%] top-[14%] bg-sun text-ink', r: '-10deg', d: '0s' },
-  { label: 'Household', cls: 'right-[0%] top-[8%] bg-white text-brand', r: '8deg', d: '1.2s' },
-  { label: 'Coffee to go', cls: 'left-[-2%] bottom-[16%] bg-leaf text-white', r: '6deg', d: '0.6s' },
-  { label: 'Big brands', cls: 'right-[2%] bottom-[8%] bg-sun text-ink', r: '-7deg', d: '1.8s' },
-];
 
 export default function Hero() {
   const photo = site.photos.hero;
@@ -31,22 +26,6 @@ export default function Hero() {
 
       <div className="wrap grid items-center gap-10 pb-8 pt-6 sm:pb-12 sm:pt-10 lg:grid-cols-[1.15fr_1fr] lg:pb-14">
         <div className="relative">
-          {/* Tablet badge, floating top right where there is room beside the headline */}
-          <div className="pointer-events-none absolute -right-1 top-1 z-0 hidden sm:block lg:hidden" aria-hidden="true">
-            <div className="relative h-[150px] w-[150px]">
-              <div className="absolute -inset-2 animate-spinslow rounded-full border-2 border-dashed border-white/35" />
-              <div className="h-full w-full animate-pop rounded-full bg-white/10 p-2.5 shadow-[0_20px_40px_-18px_rgba(0,0,0,.6)] ring-1 ring-white/25 [animation-delay:.2s]">
-                <img src="/logo.png" alt="" className="h-full w-full animate-float rounded-full" />
-              </div>
-              <span
-                style={{ ['--r' as string]: '-9deg' }}
-                className="tag absolute -bottom-3 -left-8 animate-float bg-sun py-1.5 pl-7 pr-3 font-display text-[14px] font-black text-ink shadow-[0_10px_20px_-10px_rgba(0,0,0,.5)] [animation-delay:.8s]"
-              >
-                Big brands
-              </span>
-            </div>
-          </div>
-
           {/* Phones: badge in its own row with the opening label beside it */}
           <div className="relative z-10 flex items-center gap-3.5 sm:block">
             <div className="relative h-[76px] w-[76px] shrink-0 sm:hidden" aria-hidden="true">
@@ -106,6 +85,8 @@ export default function Hero() {
             )}
           </p>
 
+          <ShopRing className="-mx-5 mt-3 h-[360px] animate-rise [animation-delay:.2s] sm:mx-0 sm:h-[440px] lg:hidden" />
+
           <div className="mt-5 animate-rise [animation-delay:.24s]">
             <Countdown />
           </div>
@@ -120,22 +101,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Logo badge with floating tags */}
-        <div className="relative mx-auto hidden aspect-square w-full max-w-[400px] lg:block" aria-hidden="true">
-          <div className="absolute inset-[6%] animate-spinslow rounded-full border-[3px] border-dashed border-white/30" />
-          <div className="absolute inset-[14%] animate-pop rounded-full bg-white/10 p-5 shadow-[0_40px_80px_-30px_rgba(0,0,0,.6)] ring-1 ring-white/25 [animation-delay:.2s]">
-            <img src="/logo.png" alt="" className="h-full w-full animate-float rounded-full" />
-          </div>
-          {tags.map((t) => (
-            <span
-              key={t.label}
-              style={{ ['--r' as string]: t.r, animationDelay: t.d }}
-              className={`tag absolute animate-float py-3 pl-9 pr-5 font-display text-lg font-black shadow-[0_18px_30px_-14px_rgba(0,0,0,.5)] ${t.cls}`}
-            >
-              {t.label}
-            </span>
-          ))}
-        </div>
+        {/* The seven shops in 3D */}
+        <ShopRing className="hidden aspect-[5/4] w-full max-w-[680px] justify-self-center lg:block" />
       </div>
     </section>
   );
