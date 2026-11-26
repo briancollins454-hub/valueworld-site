@@ -195,4 +195,4 @@ export const offersValidUntil: string | null = null;
 // Holding page: while true, every address shows a single "opening soon" page instead of the full site.
 // The full site still builds on Vercel preview links (set NEXT_PUBLIC_FULL_SITE=1 there).
 // To go live, set this to false (or set NEXT_PUBLIC_FULL_SITE=1 for production) and redeploy.
-export const holding = process.env.NEXT_PUBLIC_FULL_SITE !== '1';
+export const holding = false; // preview branch: always show the full site
