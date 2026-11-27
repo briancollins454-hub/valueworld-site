@@ -38,8 +38,8 @@ export const stores: Store[] = [
     slug: 'ballymena',
     town: 'Ballymena',
     status: 'opening-soon', // switch to 'open' after opening day
-    openingDate: 'Friday 27 November',
-    openingAt: '2026-11-27T07:00:00Z', // doors open 7am (UK time = UTC in winter)
+    openingDate: 'Monday 30 November',
+    openingAt: '2026-11-30T07:00:00Z', // doors open 7am (UK time = UTC in winter)
     address: { line1: '155 Church Street', town: 'Ballymena', postcode: 'BT43 6DG', country: 'GB' },
     landmark: 'In the old Bank of Ireland building, beside the bandstand.',
     geo: { lat: 54.8663938, lng: -6.2734897 },
@@ -90,7 +90,7 @@ export const site = {
 // The next store to open (drives the countdown and opening banner), if any.
 export const nextOpening = stores.find((s) => s.status === 'opening-soon' && s.openingAt) ?? null;
 export const storeUrl = (s: Store) => `/stores/${s.slug}/`;
-export const shortDate = (d: string) => d.replace('Wednesday', 'Wed').replace('Friday', 'Fri').replace('Thursday', 'Thu').replace('Saturday', 'Sat').replace('November', 'Nov').replace('December', 'Dec');
+export const shortDate = (d: string) => d.replace('Monday', 'Mon').replace('Tuesday', 'Tue').replace('Sunday', 'Sun').replace('Wednesday', 'Wed').replace('Friday', 'Fri').replace('Thursday', 'Thu').replace('Saturday', 'Sat').replace('November', 'Nov').replace('December', 'Dec');
 
 export const nav = [
   { label: 'Home', href: '/' },
